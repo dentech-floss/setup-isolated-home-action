@@ -1,0 +1,17 @@
+name: 'Setup Isolated HOME for Go'
+description: 'Creates an isolated HOME directory for Go builds on self-hosted runners with automatic cleanup'
+author: 'Dentech AB'
+
+branding:
+  icon: 'home'
+  color: 'blue'
+
+outputs:
+  isolated-home:
+    description: 'Path to the isolated HOME directory'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+  post: 'dist/post.js'
+  post-if: 'always()'

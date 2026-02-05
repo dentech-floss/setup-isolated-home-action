@@ -1,0 +1,28 @@
+{
+  "name": "setup-isolated-home-action",
+  "version": "1.0.0",
+  "description": "Setup isolated HOME for Go builds on self-hosted runners",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build index.js -o dist && ncc build post.js -o dist",
+    "test": "echo \"No tests yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dentech-floss/setup-isolated-home-action.git"
+  },
+  "keywords": [
+    "github-actions",
+    "go",
+    "golang",
+    "self-hosted",
+    "runner",
+    "cleanup",
+    "dentech"
+  ],
+  "author": "Dentech AB",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1"
+  }
+}
