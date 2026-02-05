@@ -12,6 +12,6 @@ outputs:
 
 runs:
   using: 'node20'
-  main: 'dist/index.js'
-  post: 'dist/post.js'
+  main: 'index.js'
+  post: 'post.js'
   post-if: 'always()'
