@@ -1,6 +1,6 @@
 {
   "name": "setup-isolated-home-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Setup isolated HOME for Go builds on self-hosted runners",
   "main": "dist/index.js",
   "scripts": {
