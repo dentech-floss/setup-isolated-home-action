@@ -2,33 +2,26 @@ name: Test Action
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build
-      
+      - uses: actions/checkout@v7
+
+      # The action runs index.js/post.js directly with the committed node_modules, so there is no build step
       - name: Test action
+        id: isolated
         uses: ./
-        
-      - name: Verify HOME is set
+
+      - name: Verify HOME is isolated
+        env:
+          ISOLATED_HOME: ${{ steps.isolated.outputs.isolated-home }}
         run: |
           echo "HOME is set to: $HOME"
-          if [ -z "$HOME" ]; then
-            echo "ERROR: HOME is not set"
+          if [ -z "$ISOLATED_HOME" ] || [ "$HOME" != "$ISOLATED_HOME" ]; then
+            echo "ERROR: HOME ($HOME) is not the isolated HOME ($ISOLATED_HOME)"
             exit 1
           fi
